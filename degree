@@ -1,0 +1,18 @@
+
+/*Find the Degree of a vertex in a Graph*/
+public class Adjdegree {
+	public static void main(String[] args) {
+		int n=4,k=0;
+		int[] sum=new int[] {0,0,0,0};
+		int[][] adj = new int[][]{{0,1,1,1},{1,0,0,1},{1,0,0,1},{1,1,1,0}};
+		for(int i=0;i<n;i++)
+		{
+			for(int j=0;j<n;j++)
+			{
+				sum[k]=sum[k]+adj[i][j];
+			}
+			System.out.println("Degree for vertex " + i + " is " + sum[k]);
+			k++;
+		}
+	}
+}
