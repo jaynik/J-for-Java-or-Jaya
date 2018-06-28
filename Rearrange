@@ -1,0 +1,32 @@
+/* To rearrange the array based on certain condition */
+
+import java.util.Arrays;
+
+public class Rearrange1 {
+
+	public static void main(String[] args) {
+		int[] arr = new int[] {1,2,1,4,5,6,8,8};
+		int[] res = new int[8];
+		int k=0,m=1;
+		Arrays.sort(arr);
+		int i=8/2,j;
+		j=i-1;
+		while(j>=0) 
+		{
+			res[k]=arr[j];
+			k=k+2;
+			j--;
+		}
+		j=i;
+		while(j<8) 
+		{
+			res[m]=arr[j];
+			m=m+2;
+			j++;
+		}
+		for(int l=0;l<8;l++)
+		{
+			System.out.println(res[l]);
+		}
+	}
+}
