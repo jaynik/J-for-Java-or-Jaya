@@ -1,0 +1,37 @@
+/*  Jumping Caterpillars */
+
+import java.util.*;
+public class caterpillar {
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		int nl,nc,j=0,count=0;
+		nl=sc.nextInt();
+		nc=sc.nextInt();
+		int[] a=new int[nc];
+		char[] b=new char[nl+1];
+		for(int i=0;i<nc;i++) 
+		{
+			a[i]=sc.nextInt();
+			b[a[i]]='c';
+		}
+		for(int k=0;k<nc;k++)
+		{
+			for(j=a[k];j<=nl;j=j+a[k])
+			{	
+				b[j]='c';
+			}
+		}
+		
+		for(int i=1;i<=nl;i++)
+		{
+			//int count=0;
+			if(b[i]!='c')
+				count++;
+			
+		}
+		for(int i=0;i<=nl;i++)
+		System.out.println(b[i]);
+		System.out.println(count);
+		sc.close();
+	}
+}
