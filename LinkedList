@@ -1,0 +1,141 @@
+package com.datastructs.LEO;
+
+/* Given a Linked List of integers, write a function to modify the linked list such that all 
+ * even numbers appear before all the odd numbers in the modified linked list. 
+ * Also, keep the order of even and odd numbers same.
+ */
+
+public class EO1 {
+
+	public static void main(String[] args) {
+		LinkedLi l1=new LinkedLi();
+		l1.insertend(1);
+		l1.insertend(2);
+		l1.insertend(4);
+		l1.insertend(5);
+	/*	l1.insertend(1);
+		l1.insertend(1);
+		l1.insertend(7);*/
+		
+		/* before modification */		
+		System.out.println("Before modifying the string");
+		l1.display();
+		
+		l1.oddeven();
+		/* after modification */		
+		System.out.println("After modifying the string");
+		l1.display();
+	}
+
+}
+package com.datastructs.LEO;
+
+public class LinkedLi {
+	
+	Node head;
+	Node temp,odd,even;
+	Node t;
+	
+	public void insertend(int data)
+	{
+		Node n=new Node();
+		n.data=data;
+		n.next=null;
+		
+		if(head==null)  //list is empty
+		{
+			head=n;
+		}
+		else
+		{
+			//traverse the list until end and assign it
+			Node temp;
+			temp=head;
+			while(temp.next!=null)
+			{
+				temp=temp.next;
+			}
+			temp.next=n;
+		}
+	}
+	
+	public void oddeven()
+	{	
+		temp=head;
+		
+		if(head==null)
+		{
+			System.out.println("Linked list is empty");
+		}
+		else
+		{
+			while(temp.next!=null)
+			{
+			if(temp.data%2==0)
+				{
+					if(even==null)
+					{
+						even=temp;
+						head=even;
+					}
+					else
+					{
+						even.next=temp;
+						even=temp;
+					}
+					temp=temp.next;
+				}
+				else
+				{
+					if(odd==null)
+					{
+						odd=temp;
+						t=temp;
+					}
+					else
+					{
+					odd.next=temp;
+					odd=temp;
+					}
+					temp=temp.next;
+				}
+				//even.next=head;
+			}
+			
+			if(temp.data%2==0)
+			{
+				even.next=temp;
+				even=temp;
+				even.next=t;
+				if(odd!=null)
+					odd.next=null;
+			}
+			else
+			{
+				odd.next=temp;
+				odd=temp;
+				odd.next=null;
+				if(even!=null)
+					even.next=t;
+			}
+			if(even==null)
+				head=t;
+		}
+	}
+	public void display()
+	{
+		Node temp=head;
+		while(temp.next!=null)
+		{
+			System.out.println(temp.data);
+			temp=temp.next;
+		}
+		System.out.println(temp.data);
+	}
+}
+package com.datastructs.LEO;
+
+public class Node {
+	int data;
+	Node next;
+}
