@@ -1,0 +1,88 @@
+/*Check for balanced parentheses in an expression*/
+package com.datastructs.stack;
+
+class stack1
+{
+	int Max=100;
+	static int top;
+	char a[]=new char[Max];
+	boolean isEmpty()
+	{
+		if(top==-1)
+			return true;
+		else
+			return false;	
+	}
+	boolean isFull()
+	{
+		if(top==Max)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+			
+	}
+	void push(char ch)
+	{
+		if(!isFull())
+		{	
+		if(ch=='['||ch=='{'||ch=='(')
+			a[++top]=ch;
+		else
+		{
+			if(ch==']'||ch=='}'||ch==')')
+			{
+				char pk=peek();
+				if(ch==']'&&pk=='['||ch=='}'&&pk=='{'||ch==')'&&pk=='(')
+				{
+					char chp=pop();
+					if(chp!=' ')
+					{
+						top--;
+					}
+					else
+					{
+						System.out.println("stack underflow");
+					}
+				}
+			}
+		}
+		}
+	}
+	char pop()
+	{
+		if(isEmpty())
+			return ' ';
+		else
+			return a[top];
+	}
+	char peek()
+	{
+		return a[top];
+	}
+	static
+	{
+		top=-1;
+	}
+}
+
+public class stackexp {
+	public static void main(String[] args) {	
+		stack1 s1=new stack1(); 
+		String s=new String("[()]{}[(([]))]");
+		char[] ch=s.toCharArray();
+		int n=ch.length;
+		
+		for(int i=0;i<n;i++)
+		{ 
+				s1.push(ch[i]);
+		}
+		if(s1.isEmpty())
+			System.out.println("true");
+		else
+			System.out.println("false");
+	}
+}
