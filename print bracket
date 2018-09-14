@@ -1,0 +1,67 @@
+/*Given an expression exp of length n consisting of some brackets. 
+ * The task is to print the bracket numbers when the expression is being parsed.*/
+package com.datastructs.stack;
+
+import java.util.Scanner;
+class stack2
+{
+	static int top;
+	int Max=100;
+	
+	int cnt=0;
+	int a[]=new int[Max];
+	static
+	{
+		top=-1;
+	}
+	boolean isEmpty()
+	{
+		if(top==-1)
+			return true;
+		else
+			return false;	
+	}
+	boolean isFull()
+	{
+		if(top==Max)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+			
+	}
+	void push(char c) {
+		if(c=='(')
+		{
+			cnt++;
+			a[++top]=cnt;
+			System.out.println(a[top]);
+		}
+		else
+		{
+			if(c==')')
+			{
+				int b=a[top];
+				System.out.println(b);
+				top--;
+			}
+		}
+	}
+}
+public class counts {
+	public static void main(String[] args) {
+		Scanner sc =new Scanner(System.in);
+		stack2 s2=new stack2();
+		String s=new String("((())(()))");
+		char[] ch=s.toCharArray();
+		int n=ch.length;
+		for(int i=0;i<n;i++) 
+		{
+			s2.push(ch[i]);
+		}
+		sc.close();
+	}
+}
