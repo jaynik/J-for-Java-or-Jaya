@@ -1,0 +1,74 @@
+/*Given an infix expression. Conver the infix expression to postfix expression.*/
+package com.datastructs.stack;
+import java.util.Scanner;
+import java.util.Stack;
+
+public class stackitp {
+	public static void main(String args[])
+	{
+		Stack<Character> st=new Stack<Character>();
+		Scanner sc=new Scanner(System.in);
+		String s1="a+b*(c^d-e)^(f+g*h)-i";
+		int n=s1.length();
+		char[] ch=s1.toCharArray();
+		
+		for(int i=0;i<n;i++)
+		{
+			if((ch[i]!='+' && ch[i]!='-' && ch[i]!='*' && ch[i]!='/' && ch[i]!='^' 
+				&& ch[i]!='(' && ch[i]!=')'))
+			{
+				System.out.print(ch[i]);
+			}
+			else
+			{
+				if(!st.isEmpty())
+				{
+					if(ch[i]!=')')
+					{
+					while((!st.isEmpty())&&(st.peek()=='+' && ch[i]=='+' ||
+						st.peek()=='+' && ch[i]=='-' ||
+						st.peek()=='-' && ch[i]=='+' ||
+						st.peek()=='*' && ch[i]=='*' ||
+						st.peek()=='/' && ch[i]=='/' ||
+						st.peek()=='*' && ch[i]=='/' ||
+						st.peek()=='/' && ch[i]=='*' ||
+						st.peek()=='^' && ch[i]=='*' ||
+						st.peek()=='^' && ch[i]=='/' ||
+						st.peek()=='^' && ch[i]=='+' ||
+						st.peek()=='^' && ch[i]=='-' ||
+						st.peek()=='*' && ch[i]=='+' ||
+						st.peek()=='*' && ch[i]=='-' ||
+						st.peek()=='/' && ch[i]=='+' ||
+						st.peek()=='/' && ch[i]=='-')   )
+						{
+							System.out.print(st.peek());
+							st.pop();
+							
+						}
+						st.push(ch[i]);			
+					}
+					else
+					{	
+						do
+						{	
+							System.out.print(st.peek());
+							st.pop();
+						}while(st.peek()!='(');
+						st.pop();
+					}		
+				}
+		
+				else
+				{
+					st.push(ch[i]);
+				}
+			}
+		}
+		while(!st.isEmpty())
+		{
+			System.out.println(st.peek());
+			st.pop();
+		}
+		sc.close();
+	}
+}
