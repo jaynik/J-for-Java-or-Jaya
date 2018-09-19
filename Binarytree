@@ -1,0 +1,82 @@
+/* Level order traversal of binary tree */
+
+package com.datastructs.hier.Binarytree;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+class Node {
+	
+	int data;
+	Node left;
+	Node right;
+	
+	Node(int i)
+	{
+		data=i;
+		left=null;
+		right=null;
+	}
+}
+
+public class Bilevel {
+
+	Node root;
+	Bilevel(int d)
+	{
+		root=new Node(d);
+	}
+	
+	Bilevel()
+	{
+		root=null;
+	}
+
+	void traversal()
+	{
+		Queue<Node> q=new LinkedList<Node>();
+		Node temp=root;
+		
+		if(temp!=null)
+		{
+			System.out.println(temp.data);
+			//q.add(temp);
+			if(temp.left!=null)
+				q.add(temp.left);
+			if(temp.right!=null)
+				q.add(temp.right);
+			while(!q.isEmpty())
+			{
+				temp=q.remove();
+				System.out.println(temp.data);
+				
+				if(temp.left!=null)
+					q.add(temp.left);
+				if(temp.right!=null)
+					q.add(temp.right);
+				
+			}
+		}
+		else
+		{
+			System.out.println("Empty tree");
+		}
+	}
+	
+	public static void main(String[] args) {
+		
+		Bilevel bl=new Bilevel();
+		bl.root=new Node(1);
+		
+		bl.root.left=new Node(5);
+		bl.root.right=new Node(9);
+
+		bl.root.left.left=new Node(3);
+		bl.root.left.right=new Node(2);
+		
+		bl.root.right.left=new Node(0);
+		bl.root.right.right=new Node(4);
+	
+		bl.traversal();
+	}
+}
