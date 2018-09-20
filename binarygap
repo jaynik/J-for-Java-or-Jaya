@@ -1,0 +1,31 @@
+/* Program to find the binary gap */
+
+public class Binaryd {
+	public static void main(String[] args) {
+		int a=1698778459,n,md=0,j,cd=0;
+		String s=Integer.toBinaryString(a);
+		char[] ch= s.toCharArray();
+		n=ch.length;
+		j=n-1;
+		System.out.println(s);
+		
+		while(ch[j]!='1')
+		{
+			j=j-1;
+		}
+		
+		for(int i=j-1;i>=0;i--)
+		{
+			md=0;
+			while(ch[i]!='1')
+			{
+				md++;
+				i=i-1;
+			}
+			if(md>cd)
+				cd=md;
+		}
+		
+		System.out.println(cd);
+	}
+}
