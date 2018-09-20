@@ -1,0 +1,26 @@
+
+public class Frog {
+	
+	int min;
+	int frogj(int x,int y,int d)
+	{
+		double xy=y-x;
+		if(xy==0)
+			return min;
+		else if(xy>d)
+		{
+			min=(int)(java.lang.Math.ceil(xy/d));
+			return min;
+		}
+		else
+			return 0;
+	}
+	
+	public static void main(String[] args) {
+		int min;
+		Frog f=new Frog();
+		min=f.frogj(10,80,40);
+		System.out.println(min);
+	}
+
+}
