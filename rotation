@@ -1,0 +1,25 @@
+/* Rotation of an array by k times*/
+public class Rotation {
+
+	public static void main(String[] args) {
+		int a[]= {3,8,9,7,6};
+		int k=5,t=1,j=0,i;
+		int b[];
+		while(t<=k)
+		{
+			b=new int[5];
+			for(i=0;i<5;i++)
+			{
+				j=(i+1)%5;
+				b[j]=a[i];
+			}
+			t++;
+			a=b;
+		}
+		for(int l=0;l<5;l++)
+		{
+			System.out.println(a[l]);
+		}
+	}
+
+}
