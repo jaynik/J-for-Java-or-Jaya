@@ -1,0 +1,41 @@
+
+public class pattern {
+	public static void main(String[] args)
+	{
+		char ch[][]= {{'a','b','a'},{'b','b','b'},{'a','b','c'}};
+		String s="ab";
+		String tempd="";
+		String tempdd="";
+		int cnt=0,k=0;
+		//String[] res=new String[8];
+		for(int i=0;i<3;i++)
+		{
+			String tempc="",tempr="";
+			for(int j=0;j<3;j++)
+			{
+				tempc=tempc+ch[i][j];
+				tempr=tempr+ch[j][i];
+			}
+			if(tempc.contains(s))
+				cnt++;
+			if(tempr.contains(s))
+				cnt++;
+		}
+		while(k<3)
+		{
+			tempd=tempd+ch[k][k];
+			k++;
+		}
+		for(int i=0,j=2;i<3 && j>0;i++,j--)
+		{
+			
+			tempdd=tempdd+ch[i][j];
+		}
+		if(tempd.contains(s))
+			cnt++;
+		if(tempdd.contains(s))
+			cnt++;
+		
+		System.out.println(cnt);
+	}
+}
