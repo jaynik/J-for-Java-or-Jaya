@@ -1,0 +1,26 @@
+import java.util.Arrays;
+
+class Solution7
+{
+	public int solution(int[] A)
+	{
+		int res=0,n=A.length,cnt1=0,cnt2=0;
+		Arrays.sort(A);
+		cnt1=A[n-1]*A[n-2]*A[n-3];
+		cnt2=A[0]*A[1]*A[n-1];
+		res=java.lang.Math.max(cnt1, cnt2);
+		return res;
+	}
+}
+public class Triplet {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int res=0;
+		int[] A= {-3,1,2,-2,5,6};
+		Solution7 s=new Solution7();
+		res=s.solution(A);
+		System.out.println(res);
+	}
+
+}
