@@ -1,0 +1,81 @@
+/* Reverse Level Order Tree Traversal */
+/* Level order traversal of binary tree */
+
+package com.datastructs.hier.Binarytree;
+
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
+
+class Node {
+	
+	int data;
+	Node left;
+	Node right;
+	
+	Node(int i)
+	{
+		data=i;
+		left=null;
+		right=null;
+	}
+}
+
+public class Bilevel {
+
+	Node root;
+	Bilevel(int d)
+	{
+		root=new Node(d);
+	}
+	
+	Bilevel()
+	{
+		root=null;
+	}
+
+	void reverse()
+	{
+		Stack<Node> st=new Stack<Node>();
+		Queue<Node> qt=new LinkedList<Node>();
+		Node temp=root;
+		
+		if(temp!=null)
+		{
+			qt.add(temp);
+			while(!qt.isEmpty())
+			{
+				temp=qt.remove();
+				st.push(temp);
+				if(temp.right!=null)
+					qt.add(temp.right);
+				if(temp.left!=null)
+					qt.add(temp.left);
+			}
+		}
+		while(!st.isEmpty())
+		{
+			Node t=st.pop();
+			System.out.println(t.data);
+		}
+	}
+	
+	public static void main(String[] args) {
+		
+		Bilevel bl=new Bilevel();
+		bl.root=new Node(1);
+		
+		bl.root.left=new Node(5);
+		bl.root.right=new Node(6);
+
+		bl.root.left.left=new Node(7);
+		bl.root.left.right=new Node(2);
+		
+		bl.root.right.left=new Node(3);
+		bl.root.right.right=new Node(4);
+	
+		//bl.traversal();
+		//bl.inorder();
+		bl.reverse();
+	}
+}
