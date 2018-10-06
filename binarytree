@@ -1,0 +1,94 @@
+/*Given a Binary Tree you need to  find maximum value which you  can get by subtracting 
+ * value of node B from value of node A, 
+ * where A and B are two nodes of the binary tree and A is an ancestor of B*/
+package com.datastructs.Practise;
+
+import java.util.LinkedList;
+import java.util.Queue;
+
+class BiNode
+{
+	int data;
+	BiNode left;
+	BiNode right;
+	
+	BiNode(int d)
+	{
+		data=d;
+		left=null;
+		right=null;
+	}
+}
+
+
+public class Bitree {
+	
+	BiNode root;
+	
+	Bitree()
+	{
+		root=null;
+	}
+	
+	Bitree(int d)
+	{
+		root=new BiNode(d);
+	}
+	
+	void create()
+	{
+		root=new BiNode(8);
+		root.left=new BiNode(6);
+		root.right=new BiNode(5);
+		root.left.left=new BiNode(2);
+		root.left.right=new BiNode(6);
+		root.right.left=new BiNode(5);
+	}
+	
+	
+	
+	public static void main(String[] args) {
+		Bitree bt=new Bitree();
+		bt.create();
+		bt.maxdiff();
+	}
+
+	void maxdiff() {
+		BiNode temp=root;
+		int max=Integer.MIN_VALUE;
+		Queue<BiNode> b=new LinkedList<BiNode>();
+		if(temp!=null)
+		{
+			//System.out.println(temp.data);
+			b.add(temp);
+			//int A=temp.data;
+			int A=0,B=0;
+			
+			while(!b.isEmpty() && temp!=null)
+			{
+				temp=b.remove();
+				A=temp.data;
+				//max=java.lang.Math.max(max,A-B);
+				
+				System.out.println(temp.data);
+				if(temp.left!=null)
+				{
+					b.add(temp.left);
+					B=temp.left.data;
+					max=java.lang.Math.max(max,A-B);
+				}
+				if(temp.right!=null)
+				{
+					b.add(temp.right);
+					B=temp.right.data;
+					max=java.lang.Math.max(max,A-B);
+				}
+			}
+		}
+		else
+			System.out.println("Tree is empty");
+		System.out.println("Maximum"+max);
+		//System.out.println(Integer.MIN_VALUE);
+	}
+	
+}
