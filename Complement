@@ -1,0 +1,48 @@
+/* A DNA string is made up of four symbols: A, T, C, and G. Each symbol has a complement:
+A and T complement each other.
+C and G complement each other.
+ 
+We define the reverse complement of a DNA string to be the string formed by reversing the symbols in the string and taking the complement of each symbol. For example, to find the reverse complement of s = GTCAG, we first reverse GTCAG -> GACTG then we complement each symbol to get CTGAC.
+
+You task is to print the reverse complement of the input string.
+ */
+public class Simple {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("hello");
+		String s="ACCGGGTTT";
+		char ch[]=s.toCharArray();
+		int n=ch.length;
+		char ch1[]=new char[n];
+		int k=n-1;
+		for(int i=0;i<n;i++)
+		{
+			
+			if(ch[k]=='A')
+			{
+				ch1[i]='T';
+			}
+			else if(ch[k]=='T')
+			{
+				ch1[i]='A';
+			}
+			else if(ch[k]=='C')
+			{
+				ch1[i]='G';
+			}
+			else if(ch[k]=='G')
+			{
+				ch1[i]='C';
+			}
+			k--;
+		}
+		for(int i=0;i<n;i++)
+		{
+			System.out.println(ch1[i]);
+		}
+		String res=new String(ch1);
+		System.out.println(res);
+	}
+
+}
