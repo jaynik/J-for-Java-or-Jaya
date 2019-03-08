@@ -1,0 +1,66 @@
+package com.prac.arrays;
+/* 1002. Find Common Characters*/
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+class Solution5
+{
+	public List<String> commonChars(String[] A) {
+		List<String> res=new ArrayList<String>();
+		int n=A.length;
+		Map<Character,Integer> m1=new HashMap<Character,Integer>();
+		Map<Character,Integer> m2;
+		for(int i=0;i<A[0].length();i++)
+		{
+			m1.put(A[0].charAt(i), m1.getOrDefault(A[0].charAt(i), 0)+1);
+		}
+		//System.out.println(m1.keySet());
+		//System.out.println(m1.values());
+		
+		for(int i=1;i<n;i++)
+		{
+			m2=new HashMap<Character,Integer>();
+			for(int j=0;j<A[i].length();j++)
+			{
+				if(m1.get(A[i].charAt(j)) !=null)
+				{
+					m2.put(A[i].charAt(j), m2.getOrDefault(A[i].charAt(j), 0)+1);
+				}	
+			}
+			for(Character c:m1.keySet())
+			{
+				if( m1.get(c)!=null &&  m2.get(c)!=null &&m1.get(c)<m2.get(c))
+					m2.replace(c,m2.get(c),m1.get(c));
+				else if (m1.get(c)!=null && m2.get(c)!=null && m1.get(c)>m2.get(c))
+					m2.replace(c,m1.get(c),m2.get(c));
+			}	
+			m1=m2;
+		}
+		for(Character c:m1.keySet())
+		{
+			int value=m1.get(c);
+			for(int i=0;i<value;i++)
+			{
+				res.add(Character.toString(c));
+			}
+		}
+		
+		return res;
+    }
+}
+public class Ex5 {
+
+	public static void main(String[] args) {
+	Solution5 s5=new Solution5();
+	String[] A= {"cool","lock","cook"};
+	List<String> l=s5.commonChars(A);
+	System.out.println(l);
+		for(int i=0;i<l.size();i++)
+		{
+			//System.out.println(l);
+		}
+	}
+
+}
