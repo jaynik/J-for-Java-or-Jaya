@@ -1,0 +1,88 @@
+package com.prac.arrays;
+/* 999. Available Captures for Rook*/
+
+class Solution4
+{
+	public int numRookCaptures(String[][] board) {
+		int res=0;
+		int x=0,y=0;
+		for(int i=0;i<8;i++)
+		{
+			for(int j=0;j<8;j++)
+			{
+				if(board[i][j]=="R")
+				{
+					x=i;
+					y=j;
+				}
+					
+			}
+		}
+		
+		for(int i=x;i<7;)
+		{
+			++i;
+			if(board[i][y]=="b")
+				break;
+			else if(board[i][y]=="p")
+			{
+				res++;
+				break;
+			}
+		}
+		
+		for(int i=x;i>0;)
+		{
+			--i;
+			if(board[i][y]=="b")
+				break;
+			else if(board[i][y]=="p")
+			{
+				res++;
+				break;
+			}
+		}
+		
+		for(int i=y;i<7;)
+		{
+			++i;
+			if(board[x][i]=="b")
+				break;
+			else if(board[x][i]=="p")
+			{
+				res++;
+				break;
+			}
+		}
+		
+		for(int i=y;i>0;)
+		{
+			--i;
+			if(board[x][i]=="b")
+				break;
+			else if(board[x][i]=="p")
+			{
+				res++;
+				break;
+			}
+		}
+		
+		return res;
+    }
+}
+public class Ex4 {
+
+	public static void main(String[] args) {
+		Solution4 s4=new Solution4();
+		String[][] board= {{".",".",".",".",".",".",".","."},{".",".",".","p",".",".",".","."},{".",".",".","R",".",".",".","p"},
+				{".",".",".",".",".",".",".","."},{".",".",".",".",".",".",".","."},{".",".",".","p",".",".",".","."},
+				{".",".",".",".",".",".",".","."},{".",".",".",".",".",".",".","."}}; 
+		int res=s4.numRookCaptures(board);
+		
+		System.out.println(res);
+			
+		
+
+	}
+
+}
