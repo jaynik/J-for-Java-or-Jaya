@@ -1,0 +1,60 @@
+package com.jayanik.prac;
+/* Given a non-empty string s, you may delete at most one character. Judge whether you can make it a palindrome.*/
+class Solution14
+{
+	public boolean validPalindrome(String s) {
+	int n=s.length();	
+	int i=0,j=n-1;
+	
+	while(i<j)
+	{
+		if(s.charAt(i)==s.charAt(j))
+		{
+			i++;
+			j--;
+		}
+		else
+		{
+			String s1=s.substring(i+1,j+1);
+			String s2=s.substring(i,j);
+			
+			//System.out.println(s1);
+			//System.out.println(s2);
+			
+			if(isPalindrome(s1)||isPalindrome(s2))
+				return true;
+			else return false;
+			
+		}
+	}
+	return false;
+}
+
+	private boolean isPalindrome(String s) {
+		int n=s.length();
+		int i=0,j=n-1;
+		while(i<j)
+		{
+			if(s.charAt(i)!=s.charAt(j))
+				return false;
+			else
+			{
+				i++;
+				j--;
+			}
+		}
+		return true;
+	}
+	
+	
+}
+public class Ex14 {
+
+	public static void main(String[] args) {
+	Solution14 s14=new Solution14();
+	String s="abcdefa";
+	boolean f=s14.validPalindrome(s);
+	System.out.println(f); 
+	}
+
+}
