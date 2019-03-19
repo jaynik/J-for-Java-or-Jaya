@@ -1,0 +1,54 @@
+package com.prac.hashmap;
+/* Given a paragraph and a list of banned words, return the most frequent word that is not in the list of banned words.*/
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
+class SolutionMk {
+    public String mostCommonWord(String paragraph, String[] banned) {
+    String[] aftersplit=paragraph.split(" ");
+    Map<String,Integer> m=new HashMap<>();
+    Set<String> s=new HashSet<>();
+    int max=Integer.MIN_VALUE;
+        String res="";
+    for(String s1:banned)
+    {
+        s.add(s1);
+    }
+    int n=aftersplit.length;
+    for(int i=0;i<n;i++)
+    {
+        StringBuilder sb=new StringBuilder();
+        for(char ch:aftersplit[i].toCharArray())
+        {    
+            if(Character.isLetter(ch))
+            {
+                sb.append(Character.toLowerCase(ch));   
+            }
+        }
+        if(!s.contains(sb.toString()))
+        {
+            m.put(sb.toString(),m.getOrDefault(sb.toString(),0)+1);
+            if(m.get(sb.toString())>max)
+            {
+                res=sb.toString();
+                max=m.get(sb.toString());
+            }
+        }
+        
+    }
+    return res; 
+    }
+}
+public class ExMock {
+
+	public static void main(String[] args) {
+		SolutionMk mk=new SolutionMk();
+		String[] banned= {"hit"};
+		String res=mk.mostCommonWord("Bob hit a ball, the hit BALL flew far after it was hit.", banned);
+		System.out.println(res);
+
+	}
+
+}
