@@ -1,0 +1,51 @@
+static int queensAttack(int n, int k, int r_q, int c_q, int[][] obstacles) {
+		int cnt=0;
+		int lenhr=n-c_q;
+		int lenhl=c_q-1;
+		int lenvu=n-r_q;
+		int lenvd=r_q-1;
+		int lendlu=Math.min(lenhl,lenvu);
+		int lendrd=Math.min(lenhr,lenvd);
+		int lendru=Math.min(lenvu,lenhr);
+		int lendld=Math.min(lenvd,lenhl);
+				
+		for(int i=0;i<k;i++)
+		{
+			int j=0;
+				int x=obstacles[i][j];
+				int y=obstacles[i][j+1];
+				
+				if((Math.abs(x-r_q))==(Math.abs(y-c_q)))
+				{
+					if(x<r_q && y>c_q)
+						lendrd=lendrd-x;
+					else if(x<r_q && y<c_q)
+						lendld=lendld-x;
+					else if(x>r_q && y>c_q)
+						lendru=lendru-x;
+					else if(x>r_q && y<c_q)
+						lendlu=lendlu-x;
+				}
+				
+				else if(x==r_q && y>c_q)
+				{
+					lenvu=lenvu-y;
+				}
+				else if(y==c_q && x>r_q)
+				{
+					lenhr=lenhr-x;
+				}
+				else if(x==r_q && y<c_q)
+				{
+					lenvd=lenvd-y;
+				}
+				else if(y==c_q && x<r_q)
+				{
+					lenhl=lenhl-x;
+				}
+			
+		}
+		cnt=lenhr+lenhl+lenvu+lenvd+lendlu+lendld+lendru+lendrd;
+		return cnt;
+    }
+© 2019 GitHub, Inc.
