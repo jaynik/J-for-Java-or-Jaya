@@ -1,2 +1,2 @@
-# J-for-Java
+# Java
 Java Programs
