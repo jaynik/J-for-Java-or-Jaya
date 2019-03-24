@@ -1,0 +1,44 @@
+import java.util.HashMap;
+import java.util.Map;
+/* 1. PrefixSet
+ * Given a table A of N integers from 0 to N-1 
+ * calculate the smallest such index P, that that {A[0],...,A[N-1]} = {A[0],...,A[P]}.*/
+class SolutionAlpha
+{
+	/*
+	 * public int prefixset(int[] A) { int n = A.length; int p = n - 1; int i = p -
+	 * 1;
+	 * 
+	 * while (i >= 0) {
+	 * 
+	 * while (i > 0 && (A[i] != A[p])) i = i - 1;
+	 * 
+	 * if (A[i] == A[p]) { p = p - 1; i = p - 1; } else i = -1; } return p; }
+	 */
+	
+	public int prefixset(int[] A)
+	{
+		Map<Integer,Integer> m=new HashMap<Integer,Integer>();
+		int n=A.length;
+		int max=Integer.MIN_VALUE;
+		for(int i=0;i<n;i++)
+		{
+			if(!m.containsKey(A[i]))
+			{
+				m.put(A[i],i);
+				max=Math.max(max, m.get(A[i]));
+			}
+		}
+		return max;
+	}
+}
+public class Alpha {
+
+	public static void main(String[] args) {
+		SolutionAlpha sa=new SolutionAlpha();
+		int[] A= {9,7,10,4,9,10};
+		int res=sa.prefixset(A);
+		System.out.println(res);
+	}
+
+}
