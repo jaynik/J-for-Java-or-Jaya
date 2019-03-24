@@ -1,0 +1,39 @@
+package com.prac.adp;
+ 
+import java.util.Arrays;
+
+class Solution1
+{
+	public boolean reversesarray(int[] A)
+	{
+		int n=A.length;
+		int[] CA=new int[n];
+		
+		for(int i=0;i<n;i++)
+		{
+			CA[i]=A[i];
+		}
+		
+		Arrays.sort(A);
+		
+		for(int i=0;i<n;i++)
+		{
+			if(CA[i]!=A[i])
+			{
+				if(CA[i]!=A[n-i-1])
+					return false;
+			}
+		}
+		return true;
+	}
+}
+public class Ex1 {
+
+	public static void main(String[] args) {
+		Solution1 s1=new Solution1();
+		int[] A= {1,8,3,4,5,2,7};
+		boolean res=s1.reversesarray(A);	
+		System.out.println(res);
+	}
+
+}
