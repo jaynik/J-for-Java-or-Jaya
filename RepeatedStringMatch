@@ -1,0 +1,49 @@
+package com.prac.strings;
+/* 686. Repeated String Match
+ * 
+ */
+class Solution3
+{
+	public int repeatedStringMatch(String A, String B) {
+    //int An=A.length();
+    int Bn=B.length();
+    int cnt=1;
+    boolean res=false;
+    StringBuilder sb=new StringBuilder(A);
+    	while(sb.length()<Bn)
+    	{
+	    	sb.append(A);
+	    	cnt++;
+    	}	
+    	
+    	System.out.println(sb.indexOf(B));
+    	if(sb.indexOf(B)>=0)
+    		return cnt;
+    	if(sb.append(A).indexOf(B)>=0)
+    		return cnt+1;
+    	return -1;
+    	
+		/*
+		 * if(sb.length()==Bn && sb.toString().equals(B) || sb.length()>Bn &&
+		 * sb.toString().contains(B)) { return cnt; } else { sb.append(A);
+		 * res=substring(sb,B); if(res==true) return cnt+1; else return -1; } }
+		 * 
+		 * private boolean substring(StringBuilder sb, String b) {
+		 * 
+		 * System.out.println(sb.toString());
+		 * 
+		 * if(sb.toString().contains(b)) return true; else return false; }
+		 */
+	}
+}
+public class Ex3 {
+
+	public static void main(String[] args) {
+		Solution3 s3=new Solution3();
+		String A="aa";
+		String B="a";
+		int res=s3.repeatedStringMatch(A, B);
+		System.out.println(res);
+	}
+
+}
