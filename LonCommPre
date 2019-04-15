@@ -1,0 +1,44 @@
+package com.prac.strings;
+/* 14. Longest Common Prefix */
+class Solution6
+{
+	public String longestCommonPrefix(String[] strs) {
+		int strsn=strs.length;
+		StringBuffer sb=new StringBuffer();;
+		if(strsn==0)
+			return "";
+		if(strsn==1)
+			return strs[0];
+		else
+		{
+			
+			for(int i=0;i<strsn-1;)
+			{
+				sb.setLength(0);
+				int j=0;
+				while(j<strs[i].length() && j<strs[i+1].length())
+				{
+					if(strs[i].charAt(j)==strs[i+1].charAt(j))
+					{
+						sb.append(strs[i].charAt(j));
+						j++;
+					}
+					else
+						break;
+				}
+				strs[++i]=sb.toString();
+			}
+		}
+		return sb.toString();
+    }
+}
+public class Ex6 {
+
+	public static void main(String[] args) {
+		Solution6 s6=new Solution6();
+		String[] strs= {"flower","flow","flight"};
+		String res=s6.longestCommonPrefix(strs);
+		System.out.println(res);
+	}
+
+}
